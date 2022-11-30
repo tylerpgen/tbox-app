@@ -15,6 +15,7 @@ import useStyles from "./styles";
 import { useDispatch } from "react-redux";
 
 import { deletePost, likePost } from "../../../actions/posts";
+import { red } from "@material-ui/core/colors";
 
 const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
@@ -71,7 +72,6 @@ const Post = ({ post, setCurrentId }) => {
           onClick={() => dispatch(deletePost(post._id))}
         >
           <DeleteIcon fontSize="small" />
-          Delete
         </Button>
       </CardActions>
     </Card>
