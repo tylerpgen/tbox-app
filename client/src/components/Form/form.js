@@ -16,9 +16,7 @@ const Form = ({ currentId, setCurrentId }) => {
     tags: "",
     selectedFile: "",
   });
-  const post = useSelector((state) =>
-    currentId ? state.posts.find((p) => p._id === currentId) : null
-  );
+  const post = useSelector((state) => (currentId ? state.posts.find((p) => p._id === currentId) : null));
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -50,24 +48,15 @@ const Form = ({ currentId, setCurrentId }) => {
 
   return (
     <Paper className={classes.paper}>
-      <form
-        autoComplete="off"
-        noValidate
-        className={`${classes.root} ${classes.form}`}
-        onSubmit={handleSubmit}
-      >
-        <Typography variant="h6">
-          {currentId ? "Editing" : "Creating"} a T-Box
-        </Typography>
+      <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
+        <Typography variant="h6">{currentId ? "Editing" : "Creating"} a T-Box</Typography>
         <TextField
           name="creator"
           variant="outlined"
           label="Creator"
           fullWidth
           value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
+          onChange={(e) => setPostData({ ...postData, creator: e.target.value })}
         />
         <TextField
           name="title"
@@ -83,9 +72,7 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Message"
           fullWidth
           value={postData.message}
-          onChange={(e) =>
-            setPostData({ ...postData, message: e.target.value })
-          }
+          onChange={(e) => setPostData({ ...postData, message: e.target.value })}
         />
         <TextField
           name="tags"
@@ -93,17 +80,13 @@ const Form = ({ currentId, setCurrentId }) => {
           label="Tags"
           fullWidth
           value={postData.tags}
-          onChange={(e) =>
-            setPostData({ ...postData, tags: e.target.value.split(",") })
-          }
+          onChange={(e) => setPostData({ ...postData, tags: e.target.value.split(",") })}
         />
         <div className={classes.fileInput}>
           <FileBase
             type="file"
             multiple={false}
-            onDone={({ base64 }) =>
-              setPostData({ ...postData, selectedFile: base64 })
-            }
+            onDone={({ base64 }) => setPostData({ ...postData, selectedFile: base64 })}
           />
         </div>
         <Button
@@ -116,13 +99,7 @@ const Form = ({ currentId, setCurrentId }) => {
         >
           Submit
         </Button>
-        <Button
-          variant="contained"
-          color="secondary"
-          size="small"
-          onClick={clear}
-          fullWidth
-        >
+        <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>
           Clear
         </Button>
       </form>
