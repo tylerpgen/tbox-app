@@ -7,6 +7,7 @@ import reducers from "./reducers";
 
 import App from "./App";
 import "./index.css";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const store = createStore(reducers, compose(applyMiddleware(thunk)));
 
